@@ -1,10 +1,17 @@
+/**********************************************************************************************
+ * Arduino PID Library - Version 1.2.1
+ * by Brett Beauregard <br3ttb@gmail.com> brettbeauregard.com
+ *
+ * This Library is licensed under the MIT License
+ **********************************************************************************************/
+
 #if ARDUINO >= 100
   #include "Arduino.h"
 #else
   #include "WProgram.h"
 #endif
 
-#include "PID_v1.h"
+#include <PID_v1.h>
 
 /*Constructor (...)*********************************************************
  *    The parameters specified here are those for for which we can't set up
@@ -197,7 +204,7 @@ void PID::SetControllerDirection(int Direction)
 {
    if(inAuto && Direction !=controllerDirection)
    {
-	   kp = (0 - kp);
+	    kp = (0 - kp);
       ki = (0 - ki);
       kd = (0 - kd);
    }
@@ -214,3 +221,4 @@ double PID::GetKi(){ return  dispKi;}
 double PID::GetKd(){ return  dispKd;}
 int PID::GetMode(){ return  inAuto ? AUTOMATIC : MANUAL;}
 int PID::GetDirection(){ return controllerDirection;}
+

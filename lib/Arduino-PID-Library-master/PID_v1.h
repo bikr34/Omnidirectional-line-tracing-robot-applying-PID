@@ -2,17 +2,21 @@
 #define PID_v1_h
 #define LIBRARY_VERSION	1.2.1
 
-class PID {
-  public:
-    //Constants used in some of the functions below
-    #define AUTOMATIC	1
-    #define MANUAL	0
-    #define DIRECT  0
-    #define REVERSE  1
-    #define P_ON_M 0
-    #define P_ON_E 1
+class PID
+{
 
-    //commonly used functions **************************************************************************
+
+  public:
+
+  //Constants used in some of the functions below
+  #define AUTOMATIC	1
+  #define MANUAL	0
+  #define DIRECT  0
+  #define REVERSE  1
+  #define P_ON_M 0
+  #define P_ON_E 1
+
+  //commonly used functions **************************************************************************
     PID(double*, double*, double*,        // * constructor.  links the PID to the Input, Output, and 
         double, double, double, int, int);//   Setpoint.  Initial tuning parameters are also set here.
                                           //   (overload for specifying proportional mode)
@@ -83,3 +87,4 @@ class PID {
 	bool inAuto, pOnE;
 };
 #endif
+
