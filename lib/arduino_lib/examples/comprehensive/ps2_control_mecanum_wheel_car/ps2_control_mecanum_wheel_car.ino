@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include "Emakefun_MotorDriver.h"
 #include "PS2X_lib.h"  //for v1.6
 
@@ -20,79 +19,81 @@ Emakefun_DCMotor *DCMotor_3 = mMotor.getMotor(3);
 Emakefun_DCMotor *DCMotor_4 = mMotor.getMotor(4);
 
 int speed_val = 100;
-
-void setup() {
+void setup()
+{
   Serial.begin(9600);
   mMotor.begin(50);
+  //setup pins and settings: GamePad(clock, command, attention, data, Pressures?, Rumble?) check for error
   ps2x.config_gamepad(PS2_CLK, PS2_CMD, PS2_SEL, PS2_DAT, pressures, rumble);
 }
 
-void loop() {
+void loop()
+{
   // ps2x.read_gamepad(); //read controller and set large motor to spin at 'vibrate' speed
-    if(ps2x.NewButtonState() == false){
-        if(ps2x.Button(PSB_START))         //will be TRUE as long as button is pressed
-          Serial.println("Start is being held");
-        if(ps2x.Button(PSB_SELECT))
-          Serial.println("Select is being held");      
-        
-        if(ps2x.Button(PSB_PAD_UP)) {      //will be TRUE as long as button is pressed
-          Serial.print("Up held this hard: ");
-          Serial.println(ps2x.Analog(PSAB_PAD_UP), DEC);
-          //前进
-          DCMotor_1->setSpeed(speed_val);
-          DCMotor_1->run(FORWARD);
-          DCMotor_2->setSpeed(speed_val);
-          DCMotor_2->run(FORWARD);
-          DCMotor_3->setSpeed(speed_val);
-          DCMotor_3->run(FORWARD);
-          DCMotor_4->setSpeed(speed_val);
-          DCMotor_4->run(FORWARD);
-        }
-        if(ps2x.Button(PSB_PAD_LEFT)){
-          Serial.print("LEFT held this hard: ");
-          Serial.println(ps2x.Analog(PSAB_PAD_LEFT), DEC);
-          //左平移
-          DCMotor_1->setSpeed(speed_val);
-          DCMotor_1->run(BACKWARD);
-          DCMotor_2->setSpeed(speed_val);
-          DCMotor_2->run(FORWARD);
-          DCMotor_3->setSpeed(speed_val);
-          DCMotor_3->run(FORWARD);
-          DCMotor_4->setSpeed(speed_val);
-          DCMotor_4->run(BACKWARD);
-        }
-        if(ps2x.Button(PSB_PAD_RIGHT)){
-          Serial.print("Right held this hard: ");
-          Serial.println(ps2x.Analog(PSAB_PAD_RIGHT), DEC);
-          //右平移
-          DCMotor_1->setSpeed(speed_val);
-          DCMotor_1->run(FORWARD);
-          DCMotor_2->setSpeed(speed_val);
-          DCMotor_2->run(BACKWARD);
-          DCMotor_3->setSpeed(speed_val);
-          DCMotor_3->run(BACKWARD);
-          DCMotor_4->setSpeed(speed_val);
-          DCMotor_4->run(FORWARD);
-        }
-        if(ps2x.Button(PSB_PAD_DOWN)){
-          Serial.print("DOWN held this hard: ");
-          Serial.println(ps2x.Analog(PSAB_PAD_DOWN), DEC);
-          //后退
-          DCMotor_1->setSpeed(speed_val);
-          DCMotor_1->run(BACKWARD);
-          DCMotor_2->setSpeed(speed_val);
-          DCMotor_2->run(BACKWARD);
-          DCMotor_3->setSpeed(speed_val);
-          DCMotor_3->run(BACKWARD);
-          DCMotor_4->setSpeed(speed_val);
-          DCMotor_4->run(BACKWARD);
-        }
-    }else {
-      DCMotor_1->run(BRAKE);
-      DCMotor_2->run(BRAKE);
-      DCMotor_3->run(BRAKE);
-      DCMotor_4->run(BRAKE);  
+  if(ps2x.NewButtonState() == false){
+    if(ps2x.Button(PSB_START))         //will be TRUE as long as button is pressed
+      Serial.println("Start is being held");
+    if(ps2x.Button(PSB_SELECT))
+      Serial.println("Select is being held");      
+  
+    if(ps2x.Button(PSB_PAD_UP)) {      //will be TRUE as long as button is pressed
+      Serial.print("Up held this hard: ");
+      Serial.println(ps2x.Analog(PSAB_PAD_UP), DEC);
+      //前进
+      DCMotor_1->setSpeed(speed_val);
+      DCMotor_1->run(FORWARD);
+      DCMotor_2->setSpeed(speed_val);
+      DCMotor_2->run(FORWARD);
+      DCMotor_3->setSpeed(speed_val);
+      DCMotor_3->run(FORWARD);
+      DCMotor_4->setSpeed(speed_val);
+      DCMotor_4->run(FORWARD);
     }
+    if(ps2x.Button(PSB_PAD_LEFT)){
+      Serial.print("LEFT held this hard: ");
+      Serial.println(ps2x.Analog(PSAB_PAD_LEFT), DEC);
+      //左平移
+      DCMotor_1->setSpeed(speed_val);
+      DCMotor_1->run(BACKWARD);
+      DCMotor_2->setSpeed(speed_val);
+      DCMotor_2->run(FORWARD);
+      DCMotor_3->setSpeed(speed_val);
+      DCMotor_3->run(FORWARD);
+      DCMotor_4->setSpeed(speed_val);
+      DCMotor_4->run(BACKWARD);
+    }
+    if(ps2x.Button(PSB_PAD_RIGHT)){
+      Serial.print("Right held this hard: ");
+      Serial.println(ps2x.Analog(PSAB_PAD_RIGHT), DEC);
+      //右平移
+      DCMotor_1->setSpeed(speed_val);
+      DCMotor_1->run(FORWARD);
+      DCMotor_2->setSpeed(speed_val);
+      DCMotor_2->run(BACKWARD);
+      DCMotor_3->setSpeed(speed_val);
+      DCMotor_3->run(BACKWARD);
+      DCMotor_4->setSpeed(speed_val);
+      DCMotor_4->run(FORWARD);
+    }
+    if(ps2x.Button(PSB_PAD_DOWN)){
+      Serial.print("DOWN held this hard: ");
+      Serial.println(ps2x.Analog(PSAB_PAD_DOWN), DEC);
+      //后退
+      DCMotor_1->setSpeed(speed_val);
+      DCMotor_1->run(BACKWARD);
+      DCMotor_2->setSpeed(speed_val);
+      DCMotor_2->run(BACKWARD);
+      DCMotor_3->setSpeed(speed_val);
+      DCMotor_3->run(BACKWARD);
+      DCMotor_4->setSpeed(speed_val);
+      DCMotor_4->run(BACKWARD);
+    }
+  }else {
+    DCMotor_1->run(BRAKE);
+    DCMotor_2->run(BRAKE);
+    DCMotor_3->run(BRAKE);
+    DCMotor_4->run(BRAKE);  
+  }
     if(ps2x.ButtonPressed(PSB_CIRCLE)){
       Serial.println("Circle just pressed");
       //原地旋转
